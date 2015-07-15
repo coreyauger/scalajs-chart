@@ -193,6 +193,32 @@ trait LineChartOptions extends ChartOptions {
   var datasetFill: Boolean = js.native
 }
 
+object LineChartOptions {
+  def apply(
+    bezierCurve: Boolean = true,
+    bezierCurveTension: Double = 1.0,
+    pointDot: Boolean = true,
+    pointDotRadius: Double = 2.0,
+    pointDotStrokeWidth: Double = 1.0,
+    pointHitDetectionRadius: Double = 2.0,
+    datasetStroke: Boolean = true,
+    datasetStrokeWidth: Double = 1.0,
+    datasetFill: Boolean = true
+             ): LineChartOptions = {
+    js.Dynamic.literal(
+      bezierCurve = bezierCurve,
+      bezierCurveTension = bezierCurveTension,
+      pointDot = pointDot,
+      pointDotRadius = pointDotRadius,
+      pointDotStrokeWidth = pointDotStrokeWidth,
+      pointHitDetectionRadius = pointHitDetectionRadius,
+      datasetStroke = datasetStroke,
+      datasetStrokeWidth = datasetStrokeWidth,
+      datasetFill = datasetFill
+    ).asInstanceOf[LineChartOptions]
+  }
+}
+
 trait BarChartOptions extends ChartOptions {
   var scaleBeginAtZero: Boolean = js.native
   var barShowStroke: Boolean = js.native
