@@ -1,4 +1,4 @@
-# scalajs-google-maps
+# scalajs-chart
 Type-safe and Scala-friendly library over Chart.js.
 
 ## Dependency Info
