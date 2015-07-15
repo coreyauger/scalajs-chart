@@ -2,11 +2,12 @@ package io.surfkit.clientlib
 
 import scala.scalajs.js
 import js.annotation._
+import js.JSConverters._
 
 package components {
 
 import org.scalajs.dom.Event
-import org.scalajs.dom.raw.CanvasRenderingContext2D
+import org.scalajs.dom.CanvasRenderingContext2D
 
 trait ChartDataSet extends js.Object {
   var label: String = js.native
@@ -21,10 +22,53 @@ trait ChartDataSet extends js.Object {
   var data: js.Array[Double] = js.native
 }
 
+object ChartDataSet {
+  def apply(
+             label: String = null,
+             fillColor: String = null,
+             strokeColor: String = null,
+             pointColor: String = null,
+             pointStrokeColor: String = null,
+             pointHighlightFill: String = null,
+             pointHighlightStroke: String = null,
+             highlightFill: String = null,
+             highlightStroke: String = null,
+             data: Seq[Double] = Nil
+             ): ChartDataSet = {
+    js.Dynamic.literal(
+      label = label,
+      fillColor = fillColor,
+      strokeColor = strokeColor,
+      pointColor = pointColor,
+      pointStrokeColor = pointStrokeColor,
+      pointHighlightFill = pointHighlightFill,
+      pointHighlightStroke = pointHighlightStroke,
+      highlightFill = highlightFill,
+      highlightStroke = highlightStroke,
+      data = data.toJSArray
+    ).asInstanceOf[ChartDataSet]
+  }
+}
+
+
 trait LinearChartData extends js.Object {
   var labels: js.Array[String] = js.native
   var datasets: js.Array[ChartDataSet] = js.native
 }
+
+object LinearChartData {
+  def apply(
+             labels: Seq[String] = null,
+             datasets: Seq[ChartDataSet] = null
+             ): LinearChartData = {
+
+    js.Dynamic.literal(
+      labels = labels.toJSArray,
+      datasets = datasets.toJSArray
+    ).asInstanceOf[LinearChartData]
+  }
+}
+
 
 trait CircularChartData extends js.Object {
   var value: Double = js.native
@@ -83,6 +127,24 @@ trait ChartOptions extends js.Object {
   var legendTemplate: String = js.native
 }
 
+object ChartOptions {
+  def apply(
+    scaleShowGridLines: Boolean = false,
+    scaleGridLineColor: String = null,
+    scaleGridLineWidth: Double = 1.0,
+    legendTemplate: String = null
+             ): ChartOptions = {
+    js.Dynamic.literal(
+      scaleShowGridLines = scaleShowGridLines,
+      scaleGridLineColor = scaleGridLineColor,
+      scaleGridLineWidth = scaleGridLineWidth,
+      legendTemplate = legendTemplate
+    ).asInstanceOf[ChartOptions]
+  }
+}
+
+
+
 trait PointsAtEvent extends js.Object {
   var value: Double = js.native
   var label: String = js.native
@@ -139,6 +201,24 @@ trait BarChartOptions extends ChartOptions {
   var barDatasetSpacing: Double = js.native
 }
 
+
+object BarChartOptions {
+  def apply(
+    scaleBeginAtZero: Boolean = true,
+    barShowStroke: Boolean = true,
+    barStrokeWidth: Double = 1.0,
+    barValueSpacing: Double = 2.0,
+    barDatasetSpacing: Double = 2.0
+             ): BarChartOptions = {
+    js.Dynamic.literal(
+      scaleBeginAtZero = scaleBeginAtZero,
+      barShowStroke = barShowStroke,
+      barStrokeWidth = barStrokeWidth,
+      barDatasetSpacing = barDatasetSpacing
+    ).asInstanceOf[BarChartOptions]
+  }
+}
+
 trait RadarChartOptions extends js.Object {
   var scaleShowLine: Boolean = js.native
   var angleShowLineOut: Boolean = js.native
@@ -189,14 +269,20 @@ trait PieChartOptions extends js.Object {
   var legendTemplate: String = js.native
 }
 
-class Chart protected () extends js.Object {
+class Chart protected() extends js.Object {
   def this(context: CanvasRenderingContext2D) = this()
-  def Line(data: LinearChartData, options: LineChartOptions = ???): LinearInstance = js.native
-  def Bar(data: LinearChartData, options: BarChartOptions = ???): LinearInstance = js.native
-  def Radar(data: LinearChartData, options: RadarChartOptions = ???): LinearInstance = js.native
-  def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = ???): CircularInstance = js.native
-  def Pie(data: js.Array[CircularChartData], options: PieChartOptions = ???): CircularInstance = js.native
-  def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = ???): CircularInstance = js.native
+
+  def Line(data: LinearChartData, options: LineChartOptions = null): LinearInstance = js.native
+
+  def Bar(data: LinearChartData, options: BarChartOptions): LinearInstance = js.native
+
+  def Radar(data: LinearChartData, options: RadarChartOptions = null): LinearInstance = js.native
+
+  def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
+
+  def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+
+  def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 }
 
 object Chart extends js.Object {
