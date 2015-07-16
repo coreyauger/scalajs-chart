@@ -140,7 +140,7 @@ object ChartOptions {
       scaleGridLineWidth = scaleGridLineWidth,
       legendTemplate = legendTemplate
     ).asInstanceOf[ChartOptions]
-  }
+  } 
 }
 
 
