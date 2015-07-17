@@ -6,8 +6,6 @@ import js.JSConverters._
 
 package components {
 
-import javafx.scene.chart.PieChart
-
 import org.scalajs.dom.Event
 import org.scalajs.dom.CanvasRenderingContext2D
 
