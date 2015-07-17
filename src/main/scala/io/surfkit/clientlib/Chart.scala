@@ -6,6 +6,8 @@ import js.JSConverters._
 
 package components {
 
+import javafx.scene.chart.PieChart
+
 import org.scalajs.dom.Event
 import org.scalajs.dom.CanvasRenderingContext2D
 
@@ -77,23 +79,39 @@ trait CircularChartData extends js.Object {
   var label: String = js.native
 }
 
+object CircularChartData {
+  def apply(
+           value: Double = 1,
+           color: String = null,
+           highlight: String = null,
+           label: String = null
+             ): CircularChartData = {
+    js.Dynamic.literal(
+      value = value,
+      color = color,
+      highlight = highlight,
+      label = label
+    ).asInstanceOf[CircularChartData]
+  }
+}
+
 trait ChartSettings extends js.Object {
   var animation: Boolean = js.native
-  var animationSteps: Double = js.native
+  var animationSteps: js.UndefOr[Double] = js.native
   var animationEasing: String = js.native
   var showScale: Boolean = js.native
   var scaleOverride: Boolean = js.native
-  var scaleSteps: Double = js.native
-  var scaleStepWidth: Double = js.native
-  var scaleStartValue: Double = js.native
+  var scaleSteps: js.UndefOr[Double] = js.native
+  var scaleStepWidth: js.UndefOr[Double] = js.native
+  var scaleStartValue: js.UndefOr[Double] = js.native
   var scaleLineColor: String = js.native
-  var scaleLineWidth: Double = js.native
+  var scaleLineWidth: js.UndefOr[Double] = js.native
   var scaleShowLabels: Boolean = js.native
   var scaleLabel: String = js.native
   var scaleIntegersOnly: Boolean = js.native
   var scaleBeginAtZero: Boolean = js.native
   var scaleFontFamily: String = js.native
-  var scaleFontSize: Double = js.native
+  var scaleFontSize: js.UndefOr[Double] = js.native
   var scaleFontStyle: String = js.native
   var scaleFontColor: String = js.native
   var responsive: Boolean = js.native
@@ -102,22 +120,110 @@ trait ChartSettings extends js.Object {
   var tooltipEvents: js.Array[String] = js.native
   var tooltipFillColor: String = js.native
   var tooltipFontFamily: String = js.native
-  var tooltipFontSize: Double = js.native
+  var tooltipFontSize: js.UndefOr[Double] = js.native
   var tooltipFontStyle: String = js.native
   var tooltipFontColor: String = js.native
   var tooltipTitleFontFamily: String = js.native
-  var tooltipTitleFontSize: Double = js.native
+  var tooltipTitleFontSize: js.UndefOr[Double] = js.native
   var tooltipTitleFontStyle: String = js.native
   var tooltipTitleFontColor: String = js.native
-  var tooltipYPadding: Double = js.native
-  var tooltipXPadding: Double = js.native
-  var tooltipCaretSize: Double = js.native
-  var tooltipCornerRadius: Double = js.native
-  var tooltipXOffset: Double = js.native
+  var tooltipYPadding: js.UndefOr[Double] = js.native
+  var tooltipXPadding: js.UndefOr[Double] = js.native
+  var tooltipCaretSize: js.UndefOr[Double] = js.native
+  var tooltipCornerRadius: js.UndefOr[Double] = js.native
+  var tooltipXOffset: js.UndefOr[Double] = js.native
   var tooltipTemplate: String = js.native
   var multiTooltipTemplate: String = js.native
   var onAnimationProgress: js.Function0[Any] = js.native
   var onAnimationComplete: js.Function0[Any] = js.native
+}
+
+object ChartSettings {
+  def apply(
+    animation: Boolean = true,
+    animationSteps: Option[Double] = null,
+    animationEasing: String = null,
+    showScale: Boolean = true,
+    scaleOverride: Boolean = false,
+    scaleSteps: Option[Double] = null,
+    scaleStepWidth: Option[Double] = null,
+    scaleStartValue: Option[Double] = null,
+    scaleLineColor: String = null,
+    scaleLineWidth: Option[Double] = null,
+    scaleShowLabels: Boolean = true,
+    scaleLabel: String = null,
+    scaleIntegersOnly: Boolean = true,
+    scaleBeginAtZero: Boolean = false,
+    scaleFontFamily: String = null,
+    scaleFontSize: Option[Double] = null,
+    scaleFontStyle: String = null,
+    scaleFontColor: String = null,
+    responsive: Boolean = false,
+    maintainAspectRatio: Boolean = true,
+    showTooltips: Boolean = true,
+    tooltipEvents: Seq[String] = null,
+    tooltipFillColor: String = null,
+    tooltipFontFamily: String = null,
+    tooltipFontSize: Option[Double] = null,
+    tooltipFontStyle: String = null,
+    tooltipFontColor: String = null,
+    tooltipTitleFontFamily: String = null,
+    tooltipTitleFontSize: Option[Double] = null,
+    tooltipTitleFontStyle: String = null,
+    tooltipTitleFontColor: String = null,
+    tooltipYPadding: Option[Double] = null,
+    tooltipXPadding: Option[Double] = null,
+    tooltipCaretSize: Option[Double] = null,
+    tooltipCornerRadius: Option[Double] = null,
+    tooltipXOffset: Option[Double] = null,
+    tooltipTemplate: String = null,
+    multiTooltipTemplate: String = null,
+    onAnimationProgress: js.Function0[Any] = null,
+    onAnimationComplete: js.Function0[Any] = null
+             ): ChartSettings = {
+    js.Dynamic.literal(
+        animation = animation,
+        animationSteps = animationSteps.orUndefined,
+        animationEasing = animationEasing,
+        showScale = showScale,
+        scaleOverride = scaleOverride,
+        scaleSteps = scaleSteps.orUndefined,
+        scaleStepWidth = scaleStepWidth.orUndefined,
+        scaleStartValue = scaleStartValue.orUndefined,
+        scaleLineColor = scaleLineColor,
+        scaleLineWidth = scaleLineWidth.orUndefined,
+        scaleShowLabels = scaleShowLabels,
+        scaleLabel = scaleLabel,
+        scaleIntegersOnly = scaleIntegersOnly,
+        scaleBeginAtZero = scaleBeginAtZero,
+        scaleFontFamily = scaleFontFamily,
+        scaleFontSize = scaleFontSize.orUndefined,
+        scaleFontStyle = scaleFontStyle,
+        scaleFontColor = scaleFontColor,
+        responsive = responsive,
+        maintainAspectRatio = maintainAspectRatio,
+        showTooltips = showTooltips,
+        tooltipEvents = tooltipEvents.toJSArray,
+        tooltipFillColor = tooltipFillColor,
+        tooltipFontFamily = tooltipFontFamily,
+        tooltipFontSize = tooltipFontSize.orUndefined,
+        tooltipFontStyle = tooltipFontStyle,
+        tooltipFontColor = tooltipFontColor,
+        tooltipTitleFontFamily = tooltipTitleFontFamily,
+        tooltipTitleFontSize = tooltipTitleFontSize.orUndefined,
+        tooltipTitleFontStyle = tooltipTitleFontStyle,
+        tooltipTitleFontColor = tooltipTitleFontColor,
+        tooltipYPadding = tooltipYPadding.orUndefined,
+        tooltipXPadding = tooltipXPadding.orUndefined,
+        tooltipCaretSize = tooltipCaretSize.orUndefined,
+        tooltipCornerRadius = tooltipCornerRadius.orUndefined,
+        tooltipXOffset = tooltipXOffset.orUndefined,
+        tooltipTemplate = tooltipTemplate,
+        multiTooltipTemplate = multiTooltipTemplate,
+        onAnimationProgress = onAnimationProgress,
+        onAnimationComplete = onAnimationComplete
+    ).asInstanceOf[ChartSettings]
+  }
 }
 
 trait ChartOptions extends js.Object {
@@ -142,8 +248,6 @@ object ChartOptions {
     ).asInstanceOf[ChartOptions]
   } 
 }
-
-
 
 trait PointsAtEvent extends js.Object {
   var value: Double = js.native
@@ -182,6 +286,8 @@ trait CircularInstance extends ChartInstance {
 }
 
 trait LineChartOptions extends ChartOptions {
+  var scaleShowHorizontalLines: Boolean = js.native
+  var scaleShowVerticalLines: Boolean = js.native
   var bezierCurve: Boolean = js.native
   var bezierCurveTension: Double = js.native
   var pointDot: Boolean = js.native
@@ -195,6 +301,8 @@ trait LineChartOptions extends ChartOptions {
 
 object LineChartOptions {
   def apply(
+    scaleShowHorizontalLines: Boolean = true,
+    scaleShowVerticalLines: Boolean = true,
     bezierCurve: Boolean = true,
     bezierCurveTension: Double = 1.0,
     pointDot: Boolean = true,
@@ -204,8 +312,10 @@ object LineChartOptions {
     datasetStroke: Boolean = true,
     datasetStrokeWidth: Double = 1.0,
     datasetFill: Boolean = true
-             ): LineChartOptions = {
+  ): LineChartOptions = {
     js.Dynamic.literal(
+      scaleShowHorizontalLines = scaleShowHorizontalLines,
+      scaleShowVerticalLines = scaleShowVerticalLines,
       bezierCurve = bezierCurve,
       bezierCurveTension = bezierCurveTension,
       pointDot = pointDot,
@@ -221,6 +331,8 @@ object LineChartOptions {
 
 trait BarChartOptions extends ChartOptions {
   var scaleBeginAtZero: Boolean = js.native
+  var scaleShowHorizontalLines: Boolean = js.native
+  var scaleShowVerticalLines: Boolean = js.native
   var barShowStroke: Boolean = js.native
   var barStrokeWidth: Double = js.native
   var barValueSpacing: Double = js.native
@@ -231,6 +343,8 @@ trait BarChartOptions extends ChartOptions {
 object BarChartOptions {
   def apply(
     scaleBeginAtZero: Boolean = true,
+    scaleShowHorizontalLines: Boolean = true,
+    scaleShowVerticalLines: Boolean = true,
     barShowStroke: Boolean = true,
     barStrokeWidth: Double = 1.0,
     barValueSpacing: Double = 2.0,
@@ -238,6 +352,8 @@ object BarChartOptions {
              ): BarChartOptions = {
     js.Dynamic.literal(
       scaleBeginAtZero = scaleBeginAtZero,
+      scaleShowHorizontalLines = scaleShowHorizontalLines,
+      scaleShowVerticalLines = scaleShowVerticalLines,
       barShowStroke = barShowStroke,
       barStrokeWidth = barStrokeWidth,
       barDatasetSpacing = barDatasetSpacing
@@ -266,6 +382,50 @@ trait RadarChartOptions extends js.Object {
   var legendTemplate: String = js.native
 }
 
+object RadarChartOptions {
+  def apply(
+    scaleShowLine: Boolean = true,
+    angleShowLineOut: Boolean = true,
+    scaleShowLabels: Boolean = false,
+    scaleBeginAtZero: Boolean = true,
+    angleLineColor: String = "rgba(0,0,0,.1)",
+    angleLineWidth: Double = 1,
+    pointLabelFontFamily: String = "'Arial'",
+    pointLabelFontStyle: String = "normal",
+    pointLabelFontSize: Double = 10,
+    pointLabelFontColor: String = "#666",
+    pointDot: Boolean = true,
+    pointDotRadius: Double = 3,
+    pointDotStrokeWidth: Double = 1,
+    pointHitDetectionRadius: Double = 20,
+    datasetStroke: Boolean = true,
+    datasetStrokeWidth: Double = 2,
+    datasetFill: Boolean = true,
+    legendTemplate: String = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+             ): RadarChartOptions = {
+    js.Dynamic.literal(
+      scaleShowLine = scaleShowLine,
+      angleShowLineOut = angleShowLineOut,
+      scaleShowLabels = scaleShowLabels,
+      scaleBeginAtZero = scaleBeginAtZero,
+      angleLineColor = angleLineColor,
+      angleLineWidth = angleLineWidth,
+      pointLabelFontFamily = pointLabelFontFamily,
+      pointLabelFontStyle = pointLabelFontStyle,
+      pointLabelFontSize = pointLabelFontSize,
+      pointLabelFontColor = pointLabelFontColor,
+      pointDot = pointDot,
+      pointDotRadius = pointDotRadius,
+      pointDotStrokeWidth = pointDotStrokeWidth,
+      pointHitDetectionRadius = pointHitDetectionRadius,
+      datasetStroke = datasetStroke,
+      datasetStrokeWidth = datasetStrokeWidth,
+      datasetFill = datasetFill,
+      legendTemplate = legendTemplate
+    ).asInstanceOf[RadarChartOptions]
+  }
+}
+
 trait PolarAreaChartOptions extends js.Object {
   var scaleShowLabelBackdrop: Boolean = js.native
   var scaleBackdropColor: String = js.native
@@ -283,6 +443,41 @@ trait PolarAreaChartOptions extends js.Object {
   var legendTemplate: String = js.native
 }
 
+object PolarAreaChartOptions {
+  def apply (
+    scaleShowLabelBackdrop: Boolean = true,
+    scaleBackdropColor: String = "rgba(255,255,255,0.75)",
+    scaleBeginAtZero: Boolean = true,
+    scaleBackdropPaddingY: Double = 2,
+    scaleBackdropPaddingX: Double = 2,
+    scaleShowLine: Boolean = true,
+    segmentShowStroke: Boolean = true,
+    segmentStrokeColor: String = "#fff",
+    segmentStrokeWidth: Double = 2,
+    animationSteps: Double = 100,
+    animationEasing: String = "easeOutBounce",
+    animateRotate: Boolean = true,
+    animateScale: Boolean = false,
+    legendTemplate: String = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+              ):PolarAreaChartOptions = {
+    js.Dynamic.literal(
+      scaleShowLabelBackdrop = scaleShowLabelBackdrop,
+      scaleBackdropColor = scaleBackdropColor,
+      scaleBeginAtZero = scaleBeginAtZero,
+      scaleBackdropPaddingY = scaleBackdropPaddingY,
+      scaleBackdropPaddingX = scaleBackdropPaddingX,
+      scaleShowLine = scaleShowLine,
+      segmentShowStroke = segmentShowStroke,
+      segmentStrokeColor = segmentStrokeColor,
+      segmentStrokeWidth = segmentStrokeWidth,
+      animationEasing = animationEasing,
+      animateRotate = animateRotate,
+      animateScale = animateScale,
+      legendTemplate = legendTemplate
+    ).asInstanceOf[PolarAreaChartOptions]
+  }
+}
+
 trait PieChartOptions extends js.Object {
   var segmentShowStroke: Boolean = js.native
   var segmentStrokeColor: String = js.native
@@ -295,6 +490,32 @@ trait PieChartOptions extends js.Object {
   var legendTemplate: String = js.native
 }
 
+object PieChartOptions {
+  def apply(
+    segmentShowStroke: Boolean = true,
+    segmentStrokeColor: String = "#fff",
+    segmentStrokeWidth: Double = 2,
+    percentageInnerCutout: Double = 0, // Default is 50 for doughnut
+    animationSteps: Double = 100,
+    animationEasing: String = "easeOutBounce",
+    animateRotate: Boolean = true,
+    animateScale: Boolean = false,
+    legendTemplate: String = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+              ):PieChartOptions = {
+    js.Dynamic.literal(
+      segmentShowStroke = segmentShowStroke,
+      segmentStrokeColor = segmentStrokeColor,
+      segmentStrokeWidth = segmentStrokeWidth,
+      percentageInnerCutout = percentageInnerCutout,
+      animationSteps = animationSteps,
+      animationEasing = animationEasing,
+      animateRotate = animateRotate,
+      animateScale = animateScale,
+      legendTemplate = legendTemplate
+    ).asInstanceOf[PieChartOptions]
+  }
+}
+
 class Chart protected() extends js.Object {
   def this(context: CanvasRenderingContext2D) = this()
 
@@ -304,11 +525,14 @@ class Chart protected() extends js.Object {
 
   def Radar(data: LinearChartData, options: RadarChartOptions = null): LinearInstance = js.native
 
-  def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
+  def PolarAreaChart(data: Seq[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = PolarArea(data.toJSArray, options)
+  private def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
 
-  def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+  def PieChart(data: Seq[CircularChartData], options: PieChartOptions = null): CircularInstance = Pie(data.toJSArray, options)
+  private def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 
-  def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+  def DoughnutChart(data:Seq[CircularChartData], options: PieChartOptions = null): CircularInstance = Doughnut(data.toJSArray, options)
+  private def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 }
 
 object Chart extends js.Object {
