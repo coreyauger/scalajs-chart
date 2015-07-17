@@ -139,15 +139,15 @@ trait ChartSettings extends js.Object {
 object ChartSettings {
   def apply(
     animation: Boolean = true,
-    animationSteps: Option[Double] = null,
+    animationSteps: Option[Double] = None,
     animationEasing: String = null,
     showScale: Boolean = true,
     scaleOverride: Boolean = false,
-    scaleSteps: Option[Double] = null,
-    scaleStepWidth: Option[Double] = null,
-    scaleStartValue: Option[Double] = null,
+    scaleSteps: Option[Double] = None,
+    scaleStepWidth: Option[Double] = None,
+    scaleStartValue: Option[Double] = None,
     scaleLineColor: String = null,
-    scaleLineWidth: Option[Double] = null,
+    scaleLineWidth: Option[Double] = None,
     scaleShowLabels: Boolean = true,
     scaleLabel: String = null,
     scaleIntegersOnly: Boolean = true,
@@ -162,18 +162,18 @@ object ChartSettings {
     tooltipEvents: Seq[String] = null,
     tooltipFillColor: String = null,
     tooltipFontFamily: String = null,
-    tooltipFontSize: Option[Double] = null,
+    tooltipFontSize: Option[Double] = None,
     tooltipFontStyle: String = null,
     tooltipFontColor: String = null,
     tooltipTitleFontFamily: String = null,
-    tooltipTitleFontSize: Option[Double] = null,
+    tooltipTitleFontSize: Option[Double] = None,
     tooltipTitleFontStyle: String = null,
     tooltipTitleFontColor: String = null,
-    tooltipYPadding: Option[Double] = null,
-    tooltipXPadding: Option[Double] = null,
-    tooltipCaretSize: Option[Double] = null,
-    tooltipCornerRadius: Option[Double] = null,
-    tooltipXOffset: Option[Double] = null,
+    tooltipYPadding: Option[Double] = None,
+    tooltipXPadding: Option[Double] = None,
+    tooltipCaretSize: Option[Double] = None,
+    tooltipCornerRadius: Option[Double] = None,
+    tooltipXOffset: Option[Double] = None,
     tooltipTemplate: String = null,
     multiTooltipTemplate: String = null,
     onAnimationProgress: js.Function0[Any] = null,
@@ -244,7 +244,7 @@ object ChartOptions {
       scaleGridLineWidth = scaleGridLineWidth,
       legendTemplate = legendTemplate
     ).asInstanceOf[ChartOptions]
-  } 
+  }
 }
 
 trait PointsAtEvent extends js.Object {
@@ -527,7 +527,6 @@ class Chart protected() extends js.Object {
 
   def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 
-  def DoughnutChart(data:Seq[CircularChartData], options: PieChartOptions = null): CircularInstance = Doughnut(data.toJSArray, options)
   def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 }
 
