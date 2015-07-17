@@ -140,7 +140,7 @@ object ChartOptions {
       scaleGridLineWidth = scaleGridLineWidth,
       legendTemplate = legendTemplate
     ).asInstanceOf[ChartOptions]
-  } 
+  }
 }
 
 
@@ -304,11 +304,17 @@ class Chart protected() extends js.Object {
 
   def Radar(data: LinearChartData, options: RadarChartOptions = null): LinearInstance = js.native
 
-  def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
+  def PolarAreaChart(data: Seq[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = PolarArea(data.toJSArray, options)
+  private def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
+
 
   def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 
   def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+
+  def setSettings(settings:ChartSettings) = {
+    Chart.defaults = settings
+  }
 }
 
 object Chart extends js.Object {
