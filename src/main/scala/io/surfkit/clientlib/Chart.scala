@@ -523,14 +523,12 @@ class Chart protected() extends js.Object {
 
   def Radar(data: LinearChartData, options: RadarChartOptions = null): LinearInstance = js.native
 
-  def PolarAreaChart(data: Seq[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = PolarArea(data.toJSArray, options)
-  private def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
+  def PolarArea(data: js.Array[CircularChartData], options: PolarAreaChartOptions = null): CircularInstance = js.native
 
-  def PieChart(data: Seq[CircularChartData], options: PieChartOptions = null): CircularInstance = Pie(data.toJSArray, options)
-  private def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+  def Pie(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 
   def DoughnutChart(data:Seq[CircularChartData], options: PieChartOptions = null): CircularInstance = Doughnut(data.toJSArray, options)
-  private def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
+  def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 }
 
 object Chart extends js.Object {
