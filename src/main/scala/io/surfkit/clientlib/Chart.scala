@@ -287,6 +287,8 @@ trait LineChartOptions extends ChartOptions {
   var datasetStroke: Boolean = js.native
   var datasetStrokeWidth: Double = js.native
   var datasetFill: Boolean = js.native
+  var responsive: Boolean = js.native
+  var maintainAspectRatio: Boolean = js.native
 }
 
 object LineChartOptions {
@@ -301,7 +303,9 @@ object LineChartOptions {
     pointHitDetectionRadius: Double = 2.0,
     datasetStroke: Boolean = true,
     datasetStrokeWidth: Double = 1.0,
-    datasetFill: Boolean = true
+    datasetFill: Boolean = true,
+    responsive: Boolean = true,
+    maintainAspectRatio: Boolean = false
   ): LineChartOptions = {
     js.Dynamic.literal(
       scaleShowHorizontalLines = scaleShowHorizontalLines,
@@ -314,7 +318,9 @@ object LineChartOptions {
       pointHitDetectionRadius = pointHitDetectionRadius,
       datasetStroke = datasetStroke,
       datasetStrokeWidth = datasetStrokeWidth,
-      datasetFill = datasetFill
+      datasetFill = datasetFill,
+      responsive = responsive,
+      maintainAspectRatio = maintainAspectRatio
     ).asInstanceOf[LineChartOptions]
   }
 }
