@@ -95,21 +95,18 @@ object CircularChartData {
 
 trait ChartSettings extends js.Object {
   var animation: Boolean = js.native
-  var animationSteps: js.UndefOr[Double] = js.native
+  var animationSteps: Double = js.native
   var animationEasing: String = js.native
   var showScale: Boolean = js.native
   var scaleOverride: Boolean = js.native
-  var scaleSteps: js.UndefOr[Double] = js.native
-  var scaleStepWidth: js.UndefOr[Double] = js.native
-  var scaleStartValue: js.UndefOr[Double] = js.native
   var scaleLineColor: String = js.native
-  var scaleLineWidth: js.UndefOr[Double] = js.native
+  var scaleLineWidth: Double = js.native
   var scaleShowLabels: Boolean = js.native
   var scaleLabel: String = js.native
   var scaleIntegersOnly: Boolean = js.native
   var scaleBeginAtZero: Boolean = js.native
   var scaleFontFamily: String = js.native
-  var scaleFontSize: js.UndefOr[Double] = js.native
+  var scaleFontSize: Double = js.native
   var scaleFontStyle: String = js.native
   var scaleFontColor: String = js.native
   var responsive: Boolean = js.native
@@ -118,84 +115,79 @@ trait ChartSettings extends js.Object {
   var tooltipEvents: js.Array[String] = js.native
   var tooltipFillColor: String = js.native
   var tooltipFontFamily: String = js.native
-  var tooltipFontSize: js.UndefOr[Double] = js.native
+  var tooltipFontSize: Double = js.native
   var tooltipFontStyle: String = js.native
   var tooltipFontColor: String = js.native
   var tooltipTitleFontFamily: String = js.native
-  var tooltipTitleFontSize: js.UndefOr[Double] = js.native
+  var tooltipTitleFontSize: Double = js.native
   var tooltipTitleFontStyle: String = js.native
   var tooltipTitleFontColor: String = js.native
-  var tooltipYPadding: js.UndefOr[Double] = js.native
-  var tooltipXPadding: js.UndefOr[Double] = js.native
-  var tooltipCaretSize: js.UndefOr[Double] = js.native
-  var tooltipCornerRadius: js.UndefOr[Double] = js.native
-  var tooltipXOffset: js.UndefOr[Double] = js.native
+  var tooltipYPadding: Double = js.native
+  var tooltipXPadding: Double = js.native
+  var tooltipCaretSize: Double = js.native
+  var tooltipCornerRadius: Double = js.native
+  var tooltipXOffset: Double = js.native
   var tooltipTemplate: String = js.native
   var multiTooltipTemplate: String = js.native
   var onAnimationProgress: js.Function0[Any] = js.native
   var onAnimationComplete: js.Function0[Any] = js.native
 }
 
+
 object ChartSettings {
   def apply(
     animation: Boolean = true,
-    animationSteps: Option[Double] = None,
-    animationEasing: String = null,
+    animationSteps: Double = 60,
+    animationEasing: String = "easeOutQuart",
     showScale: Boolean = true,
     scaleOverride: Boolean = false,
-    scaleSteps: Option[Double] = None,
-    scaleStepWidth: Option[Double] = None,
-    scaleStartValue: Option[Double] = None,
-    scaleLineColor: String = null,
-    scaleLineWidth: Option[Double] = None,
+    scaleLineColor: String = "rgba(0,0,0,0.1)",
+    scaleLineWidth: Double = 1,
     scaleShowLabels: Boolean = true,
-    scaleLabel: String = null,
+    scaleLabel: String = "<%value%>",
     scaleIntegersOnly: Boolean = true,
     scaleBeginAtZero: Boolean = false,
-    scaleFontFamily: String = null,
-    scaleFontSize: Option[Double] = null,
-    scaleFontStyle: String = null,
-    scaleFontColor: String = null,
-    responsive: Boolean = false,
-    maintainAspectRatio: Boolean = true,
+    scaleFontFamily: String = "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    scaleFontSize: Double = 12,
+    scaleFontStyle: String = "normal",
+    scaleFontColor: String = "#666",
+    responsive: Boolean = true,
+    maintainAspectRatio: Boolean = false,
     showTooltips: Boolean = true,
-    tooltipEvents: Seq[String] = null,
-    tooltipFillColor: String = null,
-    tooltipFontFamily: String = null,
-    tooltipFontSize: Option[Double] = None,
-    tooltipFontStyle: String = null,
-    tooltipFontColor: String = null,
-    tooltipTitleFontFamily: String = null,
-    tooltipTitleFontSize: Option[Double] = None,
-    tooltipTitleFontStyle: String = null,
-    tooltipTitleFontColor: String = null,
-    tooltipYPadding: Option[Double] = None,
-    tooltipXPadding: Option[Double] = None,
-    tooltipCaretSize: Option[Double] = None,
-    tooltipCornerRadius: Option[Double] = None,
-    tooltipXOffset: Option[Double] = None,
-    tooltipTemplate: String = null,
-    multiTooltipTemplate: String = null,
-    onAnimationProgress: js.Function0[Any] = null,
-    onAnimationComplete: js.Function0[Any] = null
+    tooltipEvents: Seq[String] = Seq("mousemove", "touchstart", "touchmove"),
+    tooltipFillColor: String = "rgba(0,0,0,0.8)",
+    tooltipFontFamily: String = "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    tooltipFontSize: Double = 14,
+    tooltipFontStyle: String = "normal",
+    tooltipFontColor: String = "#fff",
+    tooltipTitleFontFamily: String = "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+    tooltipTitleFontSize: Double = 14,
+    tooltipTitleFontStyle: String = "bold",
+    tooltipTitleFontColor: String = "#fff",
+    tooltipYPadding: Double = 6,
+    tooltipXPadding: Double = 6,
+    tooltipCaretSize: Double = 8,
+    tooltipCornerRadius: Double = 6,
+    tooltipXOffset: Double = 10,
+    tooltipTemplate: String = "<%if (label){%><%=label%>: <%}%><%= value %>",
+    multiTooltipTemplate: String = "<%= value %>",
+    onAnimationProgress: js.Function0[Any] = () => {},
+    onAnimationComplete: js.Function0[Any] = () => {}
              ): ChartSettings = {
     js.Dynamic.literal(
         animation = animation,
-        animationSteps = animationSteps.orUndefined,
+        animationSteps = animationSteps,
         animationEasing = animationEasing,
         showScale = showScale,
         scaleOverride = scaleOverride,
-        scaleSteps = scaleSteps.orUndefined,
-        scaleStepWidth = scaleStepWidth.orUndefined,
-        scaleStartValue = scaleStartValue.orUndefined,
         scaleLineColor = scaleLineColor,
-        scaleLineWidth = scaleLineWidth.orUndefined,
+        scaleLineWidth = scaleLineWidth,
         scaleShowLabels = scaleShowLabels,
         scaleLabel = scaleLabel,
         scaleIntegersOnly = scaleIntegersOnly,
         scaleBeginAtZero = scaleBeginAtZero,
         scaleFontFamily = scaleFontFamily,
-        scaleFontSize = scaleFontSize.orUndefined,
+        scaleFontSize = scaleFontSize,
         scaleFontStyle = scaleFontStyle,
         scaleFontColor = scaleFontColor,
         responsive = responsive,
@@ -204,18 +196,18 @@ object ChartSettings {
         tooltipEvents = tooltipEvents.toJSArray,
         tooltipFillColor = tooltipFillColor,
         tooltipFontFamily = tooltipFontFamily,
-        tooltipFontSize = tooltipFontSize.orUndefined,
+        tooltipFontSize = tooltipFontSize,
         tooltipFontStyle = tooltipFontStyle,
         tooltipFontColor = tooltipFontColor,
         tooltipTitleFontFamily = tooltipTitleFontFamily,
-        tooltipTitleFontSize = tooltipTitleFontSize.orUndefined,
+        tooltipTitleFontSize = tooltipTitleFontSize,
         tooltipTitleFontStyle = tooltipTitleFontStyle,
         tooltipTitleFontColor = tooltipTitleFontColor,
-        tooltipYPadding = tooltipYPadding.orUndefined,
-        tooltipXPadding = tooltipXPadding.orUndefined,
-        tooltipCaretSize = tooltipCaretSize.orUndefined,
-        tooltipCornerRadius = tooltipCornerRadius.orUndefined,
-        tooltipXOffset = tooltipXOffset.orUndefined,
+        tooltipYPadding = tooltipYPadding,
+        tooltipXPadding = tooltipXPadding,
+        tooltipCaretSize = tooltipCaretSize,
+        tooltipCornerRadius = tooltipCornerRadius,
+        tooltipXOffset = tooltipXOffset,
         tooltipTemplate = tooltipTemplate,
         multiTooltipTemplate = multiTooltipTemplate,
         onAnimationProgress = onAnimationProgress,
@@ -295,6 +287,8 @@ trait LineChartOptions extends ChartOptions {
   var datasetStroke: Boolean = js.native
   var datasetStrokeWidth: Double = js.native
   var datasetFill: Boolean = js.native
+  var responsive: Boolean = js.native
+  var maintainAspectRatio: Boolean = js.native
 }
 
 object LineChartOptions {
@@ -309,7 +303,9 @@ object LineChartOptions {
     pointHitDetectionRadius: Double = 2.0,
     datasetStroke: Boolean = true,
     datasetStrokeWidth: Double = 1.0,
-    datasetFill: Boolean = true
+    datasetFill: Boolean = true,
+    responsive: Boolean = true,
+    maintainAspectRatio: Boolean = false
   ): LineChartOptions = {
     js.Dynamic.literal(
       scaleShowHorizontalLines = scaleShowHorizontalLines,
@@ -322,7 +318,9 @@ object LineChartOptions {
       pointHitDetectionRadius = pointHitDetectionRadius,
       datasetStroke = datasetStroke,
       datasetStrokeWidth = datasetStrokeWidth,
-      datasetFill = datasetFill
+      datasetFill = datasetFill,
+      responsive = responsive,
+      maintainAspectRatio = maintainAspectRatio
     ).asInstanceOf[LineChartOptions]
   }
 }
@@ -335,6 +333,8 @@ trait BarChartOptions extends ChartOptions {
   var barStrokeWidth: Double = js.native
   var barValueSpacing: Double = js.native
   var barDatasetSpacing: Double = js.native
+  var responsive: Boolean = js.native
+  var maintainAspectRatio: Boolean = js.native
 }
 
 
@@ -344,17 +344,22 @@ object BarChartOptions {
     scaleShowHorizontalLines: Boolean = true,
     scaleShowVerticalLines: Boolean = true,
     barShowStroke: Boolean = true,
-    barStrokeWidth: Double = 1.0,
+    barStrokeWidth: Double = 2.0,
     barValueSpacing: Double = 2.0,
-    barDatasetSpacing: Double = 2.0
+    barDatasetSpacing: Double = 2.0,
+    responsive: Boolean = true,
+    maintainAspectRatio: Boolean = false
              ): BarChartOptions = {
     js.Dynamic.literal(
       scaleBeginAtZero = scaleBeginAtZero,
       scaleShowHorizontalLines = scaleShowHorizontalLines,
       scaleShowVerticalLines = scaleShowVerticalLines,
       barShowStroke = barShowStroke,
+      barValueSpacing = barValueSpacing,
       barStrokeWidth = barStrokeWidth,
-      barDatasetSpacing = barDatasetSpacing
+      barDatasetSpacing = barDatasetSpacing,
+      responsive = responsive,
+      maintainAspectRatio = maintainAspectRatio
     ).asInstanceOf[BarChartOptions]
   }
 }
@@ -519,7 +524,7 @@ class Chart protected() extends js.Object {
 
   def Line(data: LinearChartData, options: LineChartOptions = null): LinearInstance = js.native
 
-  def Bar(data: LinearChartData, options: BarChartOptions): LinearInstance = js.native
+  def Bar(data: LinearChartData, options: BarChartOptions = null): LinearInstance = js.native
 
   def Radar(data: LinearChartData, options: RadarChartOptions = null): LinearInstance = js.native
 
