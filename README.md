@@ -16,7 +16,7 @@ I assume that you have setup a ScalaJS project before.  If this is not the case 
 ```
 Or better yet... if you are using WebJAR you can simply include the following line in your build.sbt
 ```sbt
-"org.webjars"                 % "chartjs"              % "26962ce-1"
+"org.webjars"                 % "chartjs"              % "1.0.2"
 ```
 
 ### Build.sbt
