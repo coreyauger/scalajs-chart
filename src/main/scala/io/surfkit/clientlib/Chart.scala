@@ -4,7 +4,7 @@ import scala.scalajs.js
 import js.annotation._
 import js.JSConverters._
 
-package components {
+package chart {
 
 import org.scalajs.dom.Event
 import org.scalajs.dom.CanvasRenderingContext2D
@@ -513,6 +513,8 @@ object PieChartOptions {
     ).asInstanceOf[PieChartOptions]
   }
 }
+
+
 
 class Chart protected() extends js.Object {
   def this(context: CanvasRenderingContext2D) = this()
