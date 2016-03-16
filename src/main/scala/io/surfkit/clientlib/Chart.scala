@@ -9,6 +9,7 @@ package chart {
 import org.scalajs.dom.Event
 import org.scalajs.dom.CanvasRenderingContext2D
 
+@js.native
 trait ChartDataSet extends js.Object {
   var label: String = js.native
   var fillColor: String = js.native
@@ -51,6 +52,7 @@ object ChartDataSet {
 }
 
 
+@js.native
 trait LinearChartData extends js.Object {
   var labels: js.Array[String] = js.native
   var datasets: js.Array[ChartDataSet] = js.native
@@ -70,6 +72,7 @@ object LinearChartData {
 }
 
 
+@js.native
 trait CircularChartData extends js.Object {
   var value: Double = js.native
   var color: String = js.native
@@ -93,6 +96,7 @@ object CircularChartData {
   }
 }
 
+@js.native
 trait ChartSettings extends js.Object {
   var animation: Boolean = js.native
   var animationSteps: Double = js.native
@@ -216,6 +220,7 @@ object ChartSettings {
   }
 }
 
+@js.native
 trait ChartOptions extends js.Object {
   var scaleShowGridLines: Boolean = js.native
   var scaleGridLineColor: String = js.native
@@ -239,6 +244,7 @@ object ChartOptions {
   }
 }
 
+@js.native
 trait PointsAtEvent extends js.Object {
   var value: Double = js.native
   var label: String = js.native
@@ -251,6 +257,7 @@ trait PointsAtEvent extends js.Object {
   var y: Double = js.native
 }
 
+@js.native
 trait ChartInstance extends js.Object {
   var clear: js.Function0[Unit] = js.native
   var stop: js.Function0[Unit] = js.native
@@ -260,6 +267,7 @@ trait ChartInstance extends js.Object {
   var generateLegend: js.Function0[String] = js.native
 }
 
+@js.native
 trait LinearInstance extends ChartInstance {
   var getPointsAtEvent: js.Function1[Event, js.Array[PointsAtEvent]] = js.native
   var update: js.Function0[Unit] = js.native
@@ -267,6 +275,7 @@ trait LinearInstance extends ChartInstance {
   var removeData: js.Function0[Unit] = js.native
 }
 
+@js.native
 trait CircularInstance extends ChartInstance {
   var getSegmentsAtEvent: js.Function1[Event, js.Array[js.Any]] = js.native
   var update: js.Function0[Unit] = js.native
@@ -275,6 +284,7 @@ trait CircularInstance extends ChartInstance {
   var segments: js.Array[CircularChartData] = js.native
 }
 
+@js.native
 trait LineChartOptions extends ChartOptions {
   var scaleShowHorizontalLines: Boolean = js.native
   var scaleShowVerticalLines: Boolean = js.native
@@ -325,6 +335,7 @@ object LineChartOptions {
   }
 }
 
+@js.native
 trait BarChartOptions extends ChartOptions {
   var scaleBeginAtZero: Boolean = js.native
   var scaleShowHorizontalLines: Boolean = js.native
@@ -364,6 +375,7 @@ object BarChartOptions {
   }
 }
 
+@js.native
 trait RadarChartOptions extends js.Object {
   var scaleShowLine: Boolean = js.native
   var angleShowLineOut: Boolean = js.native
@@ -429,6 +441,7 @@ object RadarChartOptions {
   }
 }
 
+@js.native
 trait PolarAreaChartOptions extends js.Object {
   var scaleShowLabelBackdrop: Boolean = js.native
   var scaleBackdropColor: String = js.native
@@ -481,6 +494,7 @@ object PolarAreaChartOptions {
   }
 }
 
+@js.native
 trait PieChartOptions extends js.Object {
   var segmentShowStroke: Boolean = js.native
   var segmentStrokeColor: String = js.native
@@ -520,7 +534,7 @@ object PieChartOptions {
 }
 
 
-
+@js.native
 class Chart protected() extends js.Object {
   def this(context: CanvasRenderingContext2D) = this()
 
@@ -537,6 +551,7 @@ class Chart protected() extends js.Object {
   def Doughnut(data: js.Array[CircularChartData], options: PieChartOptions = null): CircularInstance = js.native
 }
 
+@js.native
 object Chart extends js.Object {
   var defaults: js.Any = js.native
 }
