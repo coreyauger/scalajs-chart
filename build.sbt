@@ -34,7 +34,7 @@ scalaVersion := "2.11.6"
 crossScalaVersions := Seq("2.10.4", "2.11.5")
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "0.8.0"
+  "org.scala-js" %%% "scalajs-dom" % "0.9.0"
 )
 
 jsDependencies in Test += RuntimeDOM
