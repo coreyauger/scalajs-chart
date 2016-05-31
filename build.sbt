@@ -27,7 +27,7 @@ name := "Type-safe and Scala-friendly library over Chart.js"
 
 normalizedName := "scalajs-chart"
 
-version := "0.1-SNAPSHOT"
+version := "0.0.1-SNAPSHOT"
 
 organization := "io.surfkit"
 
